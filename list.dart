@@ -44,3 +44,14 @@ class ListExamplePage extends StatelessWidget {
       children: children,
     );
   }
+
+// Returns the widget at position i in the list, separated using a BoxDecoration
+  Widget _getRowWithBoxDecoration(int i) {
+    return new Container(
+        decoration: new BoxDecoration(
+            border:
+                new Border(bottom: new BorderSide(color: Colors.grey[100]))),
+        child: new Padding(
+            padding: new EdgeInsets.all(10.0), child: new Text('Row $i')));
+  }
+}
