@@ -1,0 +1,55 @@
+ Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+                color: Colors.red,
+                blurRadius: 10.0,
+                spreadRadius: 1,
+                offset: Offset(
+                  10.0,
+                  10.0,
+                ))
+          ],
+        ),child: GridTile(
+          child: GestureDetector(
+            child: Image.network(
+              loadedProduct.imageUrl,
+              fit: BoxFit.cover,
+            ),
+            onTap: () {
+              Navigator.of(context).pushNamed(
+                ProductDetailScreen.routeName,
+                arguments: loadedProduct.id,
+              );
+            },
+          ),
+          footer: GridTileBar(
+            leading: IconButton(
+              icon: Icon(loadedProduct.isFavorite
+                  ? Icons.favorite
+                  : Icons.favorite_border),
+              onPressed: () {
+                loadedProduct.toggleFavoriteStatus();
+              },
+              color: Theme
+                  .of(context)
+                  .accentColor,
+            ),
+            backgroundColor: Colors.black87,
+            trailing: IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {
+                cart.addItem(loadedProduct.id, loadedProduct.price, loadedProduct.title);
+              },
+              color: Theme
+                  .of(context)
+                  .accentColor,
+            ),
+            title: Text(
+              loadedProduct.title,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        )
+        )
+    
